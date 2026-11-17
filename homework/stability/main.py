@@ -133,7 +133,8 @@ print("Малый аргумент усиливает сокращение, floa
 print("\n11. Независимый эталон")
 x = 1e16
 v1 = math.sqrt(x + 1) - math.sqrt(x)
-v2 = math.sqrt(1 + x) - math.sqrt(x)
+upper_root = math.sqrt(x + 1)
+v2 = (upper_root ** 2 - x) / (upper_root + math.sqrt(x))
 reference = ref_root(mp.mpf(x))
 print(v1 == v2, v1, v2, mp.nstr(reference, 18), relative(v1, reference), relative(v2, reference))
 print("В обеих реализациях промежуточная сумма округлилась до x. Совпадение двух float не подтверждает правильность без независимого эталона.")
